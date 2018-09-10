@@ -10,28 +10,15 @@ Request user permissions from React Native, iOS + Android
 
 | Version | React Native Support |
 | ------- | -------------------- |
-| 1.1.1   | 0.40 - 0.52          |
-| 0.2.5   | 0.33 - 0.39          |
+| 1.1.1   | 0.40 - 0.55+          |
 
 _Complies with
 [react-native-version-support-table](https://github.com/dangnelson/react-native-version-support-table)_
-
-## ⚠️ Breaking changes in version 1.0.0
-
-* Now using React Native's own JS `PermissionsAndroid` module on Android, which
-  is great because we no longer have to do any additional linking on Android
-* Updated API to be closer to React Native's `PermissionsAndroid`
-* Removed `openSettings()` support on Android (to stay linking-free). There are
-  several NPM modules available for this
-* `restricted` status now supported on Android, although it means something
-  different than iOS
 
 ## Setup
 
 ```sh
 npm install --save react-native-permissions
-# --- or ---
-yarn add react-native-permissions
 ```
 
 _📌 Don't forget to add permissions to `AndroidManifest.xml` for android and
@@ -47,21 +34,6 @@ podfile:
 ```ruby
 pod 'ReactNativePermissions', :path => '../node_modules/react-native-permissions'
 ```
-
-#### Using react-native link
-
-```sh
-react-native link react-native-permissions
-```
-
-#### Using manual linking
-
-1. In the XCode's "Project navigator", right click on your project's Libraries
-   folder ➜ `Add Files to <...>`
-2. Go to `node_modules` ➜ `react-native-permissions` ➜ select
-   `ReactNativePermissions.xcodeproj`
-3. Add `libReactNativePermissions.a` to `Build Phases` -> `Link Binary With
-   Libraries`
 
 ## Using
 
@@ -151,21 +123,9 @@ The current supported permissions are:
 | ------------------ | ------------------- | --- | ------- |
 | Location           | `location`          | ✔️  | ✔       |
 | Camera             | `camera`            | ✔️  | ✔       |
-| Microphone         | `microphone`        | ✔️  | ✔       |
 | Photos             | `photo`             | ✔️  | ✔       |
-| Contacts           | `contacts`          | ✔️  | ✔       |
-| Events             | `event`             | ✔️  | ✔       |
-| Bluetooth          | `bluetooth`         | ✔️  | ❌      |
-| Reminders          | `reminder`          | ✔️  | ❌      |
 | Push Notifications | `notification`      | ✔️  | ❌      |
-| Background Refresh | `backgroundRefresh` | ✔️  | ❌      |
-| Speech Recognition | `speechRecognition` | ✔️  | ❌      |
-| mediaLibrary       | `mediaLibrary`      | ✔️  | ❌      |
-| Motion Activity    | `motion`            | ✔️  | ❌      |
 | Storage            | `storage`           | ❌️ | ✔       |
-| Phone Call         | `callPhone`         | ❌️ | ✔       |
-| Read SMS           | `readSms`           | ❌️ | ✔       |
-| Receive SMS        | `receiveSms`        | ❌️ | ✔       |
 
 ### Methods
 
@@ -227,10 +187,6 @@ So before submitting your app to the App Store, make sure that in your
 `Info.plist` you have the following keys:
 
 ```xml
-<key>NSBluetoothPeripheralUsageDescription</key>
-<string>Some description</string>
-<key>NSCalendarsUsageDescription</key>
-<string>Some description</string>
 <key>NSCameraUsageDescription</key>
 <string>Some description</string>
 <key>NSLocationWhenInUseUsageDescription</key>
@@ -238,12 +194,6 @@ So before submitting your app to the App Store, make sure that in your
 <key>NSPhotoLibraryAddUsageDescription</key>
 <string>Some description</string>
 <key>NSPhotoLibraryUsageDescription</key>
-<string>Some description</string>
-<key>NSSpeechRecognitionUsageDescription</key>
-<string>Some description</string>
-<key>NSAppleMusicUsageDescription</key>
-<string>Some description</string>
-<key>NSMotionUsageDescription</key>
 <string>Some description</string>
 ```
 This is required because during the phase of processing in the App Store
