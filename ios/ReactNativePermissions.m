@@ -38,7 +38,6 @@
 #import "RNPNotification.h"
 #import "RNPAudioVideo.h"
 #import "RNPPhoto.h"
-#import "RNPMediaLibrary.h"
 
 @interface ReactNativePermissions()
 @property (strong, nonatomic) RNPLocation *locationMgr;
@@ -47,8 +46,8 @@
 
 @implementation ReactNativePermissions
 
-
 RCT_EXPORT_MODULE();
+
 @synthesize bridge = _bridge;
 
 + (BOOL)requiresMainQueueSetup
