@@ -121,7 +121,7 @@ The current supported permissions are:
 
 |                    | Type                | iOS | Android |
 | ------------------ | ------------------- | --- | ------- |
-| Location           | `location`          | ✔️  | ✔       |
+| Location           | `location`          | ✔️Privacy - (When In Use) | ✔       |
 | Camera             | `camera`            | ✔️  | ✔       |
 | Photos             | `photo`             | ✔️  | ✔       |
 | Push Notifications | `notification`      | ✔️  | ❌      |
@@ -152,11 +152,8 @@ The current supported permissions are:
 
 ```js
 // example
-Permissions.check('location', { type: 'always' }).then(response => {
-  this.setState({ locationPermission: response })
-})
 
-Permissions.request('location', { type: 'always' }).then(response => {
+Permissions.request('location', { type: 'whenInUse' }).then(response => {
   this.setState({ locationPermission: response })
 })
 
@@ -190,8 +187,6 @@ So before submitting your app to the App Store, make sure that in your
 <key>NSCameraUsageDescription</key>
 <string>Some description</string>
 <key>NSLocationWhenInUseUsageDescription</key>
-<string>Some description</string>
-<key>NSPhotoLibraryAddUsageDescription</key>
 <string>Some description</string>
 <key>NSPhotoLibraryUsageDescription</key>
 <string>Some description</string>

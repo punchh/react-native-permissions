@@ -17,8 +17,7 @@
 
 @implementation RNPLocation
 
-+ (NSString *)getStatusForType:(NSString *)type
-{
++ (NSString *)getStatusForType:(NSString *)type {
     int status = [CLLocationManager authorizationStatus];
     switch (status) {
         case kCLAuthorizationStatusAuthorizedAlways:
@@ -34,8 +33,7 @@
     }
 }
 
-- (void)request:(NSString*)type completionHandler:(void (^)(NSString *))completionHandler
-{
+- (void)request:(NSString*)type completionHandler:(void (^)(NSString *))completionHandler {
     NSString *status = [RNPLocation getStatusForType:nil];
     if (status == RNPStatusUndetermined) {
         self.completionHandler = completionHandler;
@@ -45,17 +43,9 @@
             self.locationManager.delegate = self;
         }
 
-        if ([type isEqualToString:@"always"]) {
-            [self.locationManager requestAlwaysAuthorization];
-        } else {
-            [self.locationManager requestWhenInUseAuthorization];
-        }
+        [self.locationManager requestWhenInUseAuthorization];
     } else {
-        if ([CLLocationManager authorizationStatus] == kCLAuthorizationStatusAuthorizedWhenInUse && [type isEqualToString:@"always"]) {
-            completionHandler(RNPStatusDenied);
-        } else {
-            completionHandler(status);
-        }
+        completionHandler(status);
     }
 }
 
