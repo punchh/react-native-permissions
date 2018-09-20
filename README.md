@@ -1,7 +1,5 @@
 # ☝🏼 React Native Permissions
 
-[![npm version](https://badge.fury.io/js/react-native-permissions.svg)](https://badge.fury.io/js/react-native-permissions)
-[![npm](https://img.shields.io/npm/dt/react-native-permissions.svg)](https://www.npmjs.org/package/react-native-permissions)
 ![Platform - Android and iOS](https://img.shields.io/badge/platform-Android%20%7C%20iOS-yellow.svg)
 ![MIT](https://img.shields.io/dub/l/vibe-d.svg)
 [![styled with prettier](https://img.shields.io/badge/styled_with-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
@@ -11,9 +9,6 @@ Request user permissions from React Native, iOS + Android
 | Version | React Native Support |
 | ------- | -------------------- |
 | 2.0   | 0.55+          |
-
-_Complies with
-[react-native-version-support-table](https://github.com/dangnelson/react-native-version-support-table)_
 
 ## Setup
 
