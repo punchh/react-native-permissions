@@ -16,20 +16,24 @@
 @end
 
 @implementation RNPLocation
-
+    
 + (NSString *)getStatusForType:(NSString *)type {
-    int status = [CLLocationManager authorizationStatus];
-    switch (status) {
-        case kCLAuthorizationStatusAuthorizedAlways:
+    if ([CLLocationManager locationServicesEnabled]) {
+        int status = [CLLocationManager authorizationStatus];
+        switch (status) {
+            case kCLAuthorizationStatusAuthorizedAlways:
             return RNPStatusAuthorized;
-        case kCLAuthorizationStatusAuthorizedWhenInUse:
+            case kCLAuthorizationStatusAuthorizedWhenInUse:
             return [type isEqualToString:@"always"] ? RNPStatusDenied : RNPStatusAuthorized;
-        case kCLAuthorizationStatusDenied:
+            case kCLAuthorizationStatusDenied:
             return RNPStatusDenied;
-        case kCLAuthorizationStatusRestricted:
+            case kCLAuthorizationStatusRestricted:
             return RNPStatusRestricted;
-        default:
+            default:
             return RNPStatusUndetermined;
+        }
+    }else{
+        return RNPStatusRestricted;
     }
 }
 
